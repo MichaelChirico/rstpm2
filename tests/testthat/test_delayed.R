@@ -32,6 +32,8 @@ test_that("pstpm2", {
 context("Delayed entry - aft")
 ##
 test_that("All values zero or one", {
+    skip_if_not_installed("eha")
+
     brcancer2 <- transform(rstpm2::brcancer,startTime=0)
     fit0 <- aft(Surv(rectime,censrec==1)~hormon,data=brcancer2)
     fit1 <- aft(Surv(startTime,rectime,censrec==1)~hormon,data=brcancer2)
